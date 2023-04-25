@@ -1,3 +1,3 @@
 # WheelDeals Server
 
-site url ► Will be updated soon
+Server url ► <a href="https://wheeldeals-server-side.vercel.app/">https://wheeldeals-server-side.vercel.app/</a>
