@@ -85,9 +85,9 @@ exports.login = async (req, res) => {
 
 exports.getMe = async (req, res, next) => {
   try {
-    const result = await loginService(req.body?.phoneNumber);
+    const result = await loginService(req.user?.phoneNumber);
     let data;
-    if (req.body?.phoneNumber === result.phoneNumber) {
+    if (req.user?.phoneNumber === result.phoneNumber) {
       data = {
         phoneNumber: result.phoneNumber,
         role: result.role,
