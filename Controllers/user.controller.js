@@ -84,6 +84,7 @@ exports.login = async (req, res) => {
 };
 
 exports.getMe = async (req, res, next) => {
+  console.log(req.user);
   try {
     const result = await loginService(req.user?.phoneNumber);
     let data;
@@ -93,6 +94,7 @@ exports.getMe = async (req, res, next) => {
         role: result.role,
         name: result.name,
         status: result.status,
+        imgURL: result.imgURL,
       };
     }
     res.status(200).json({
