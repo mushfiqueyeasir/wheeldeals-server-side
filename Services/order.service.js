@@ -38,10 +38,22 @@ exports.getOrderById = async (id) => {
 exports.updateOrder = async (id, data) => {
   const query = { _id: ObjectId(id) };
   const result = await orderSchema.updateMany(query, data);
-
   return result;
 };
 exports.deleteOrder = async (id) => {
+  const query = { _id: ObjectId(id) };
+  const order = await orderSchema.findOne(query);
+  const product = await productSchema.findOne({
+    _id: ObjectId(order.productID),
+  });
+  product.productStock = product.productStock + order.productQuantity;
+  await productSchema.updateMany(
+    {
+      _id: ObjectId(order.productID),
+    },
+    product
+  );
+
   const result = await orderSchema.findByIdAndDelete(id);
   return result;
 };

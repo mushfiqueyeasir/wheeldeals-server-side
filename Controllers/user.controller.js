@@ -115,17 +115,19 @@ exports.getUsers = async (req, res, next) => {
     const result = await getUsersService(req.body);
     let data = [];
     result.forEach((Element) => {
-      data.push({
-        id: Element._id,
-        phoneNumber: Element.phoneNumber,
-        role: Element.role,
-        name: Element.name,
-        imgURL: Element.imgURL,
-        status: Element.status,
-        primary: Element.primary,
-        createdAt: Element.createdAt,
-        updatedAt: Element.updatedAt,
-      });
+      if (Element.role === "customer") {
+        data.push({
+          id: Element._id,
+          phoneNumber: Element.phoneNumber,
+          role: Element.role,
+          name: Element.name,
+          imgURL: Element.imgURL,
+          status: Element.status,
+          primary: Element.primary,
+          createdAt: Element.createdAt,
+          updatedAt: Element.updatedAt,
+        });
+      }
     });
 
     res.status(200).json({

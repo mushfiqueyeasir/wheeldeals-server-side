@@ -14,7 +14,7 @@ router
   .get(verifyToken, orderController.getUserOrders);
 
 router
-  .route("/:id")
+  .route("/unique/:id")
   .get(orderController.getOrderById)
   .put(verifyToken, orderController.updateOrder)
   .delete(verifyToken, orderController.deleteOrderByID);
