@@ -11,10 +11,10 @@ exports.saveOrder = async (data) => {
   }
 
   const productQuery = { _id: ObjectId(data.productID) };
-  const productData = await productSchema.find(productQuery);
-  productData[0].productStock =
-    productData[0].productStock - data.productQuantity;
-  await productSchema.updateMany(productQuery, productData[0]);
+  const productData = await productSchema.findOne(productQuery);
+  productData.productStock = productData.productStock - data.productQuantity;
+
+  await productSchema.updateMany(productQuery, productData);
   const result = await orderSchema.create(data);
   return result;
 };
@@ -46,14 +46,16 @@ exports.deleteOrder = async (id) => {
   const product = await productSchema.findOne({
     _id: ObjectId(order.productID),
   });
-  product.productStock = product.productStock + order.productQuantity;
-  await productSchema.updateMany(
-    {
-      _id: ObjectId(order.productID),
-    },
-    product
-  );
-
+  console.log(product);
+  if (product) {
+    product.productStock = product.productStock + order.productQuantity;
+    await productSchema.updateMany(
+      {
+        _id: ObjectId(order.productID),
+      },
+      product
+    );
+  }
   const result = await orderSchema.findByIdAndDelete(id);
   return result;
 };
