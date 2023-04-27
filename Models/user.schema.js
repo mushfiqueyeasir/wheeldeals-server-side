@@ -34,7 +34,7 @@ const userSchema = mongoose.Schema(
     },
 
     phoneNumber: {
-      type: Number,
+      type: String,
       unique: true,
       required: [true, "Phone Number address is required"],
       minLength: [0, "Phone Number Can't be Negative"],
