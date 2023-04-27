@@ -13,7 +13,7 @@ router
 router
   .route("/:id")
   .get(productController.getProductByID)
-  .put(authorization("admin"), verifyToken, productController.updateProduct)
+  .put(verifyToken, productController.updateProduct)
   .delete(verifyToken, productController.deleteProduct);
 
 module.exports = router;
