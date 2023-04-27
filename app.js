@@ -14,7 +14,7 @@ const orderRoute = require("./Routes/V1/order.route");
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/product", productRoute);
 app.use("/api/v1/cart", cartRoute);
-app.use("/api/v1/order", cartRoute);
+app.use("/api/v1/order", orderRoute);
 
 app.get("/", (req, res) => {
   res.send(`<h1>Welcome to the database</h1>

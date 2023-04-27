@@ -84,7 +84,6 @@ exports.login = async (req, res) => {
 };
 
 exports.getMe = async (req, res, next) => {
-  console.log(req.user);
   try {
     const result = await loginService(req.user?.phoneNumber);
     let data;

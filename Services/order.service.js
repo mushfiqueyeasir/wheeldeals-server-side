@@ -6,13 +6,15 @@ const productSchema = require("../Models/productSchema");
 exports.saveOrder = async (data) => {
   const query = { _id: ObjectId(data.cartItemID) };
   const cartItem = await cartSchema.find(query);
-  if (cartItem) {
+  if (cartItem.length > 0) {
     await cartSchema.findByIdAndDelete(data.cartItemID);
   }
-  const productQuery = { _id: ObjectId(id) };
+
+  const productQuery = { _id: ObjectId(data.productID) };
   const productData = await productSchema.find(productQuery);
-  productData.productStock = productData.productStock - data.productQuantity;
-  await productSchema.updateMany(productQuery, productData);
+  productData[0].productStock =
+    productData[0].productStock - data.productQuantity;
+  await productSchema.updateMany(productQuery, productData[0]);
   const result = await orderSchema.create(data);
   return result;
 };
@@ -23,7 +25,7 @@ exports.getUserOrders = async (userPhoneNumber) => {
   return result;
 };
 exports.getOrders = async () => {
-  const result = await orderSchema.find({}).sort({ $natural: -1 });
+  const result = await orderSchema.find().sort({ $natural: -1 });
   return result;
 };
 

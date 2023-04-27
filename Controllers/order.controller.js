@@ -13,13 +13,13 @@ exports.saveOrderData = async (req, res, next) => {
 
     res.status(200).json({
       status: "success",
-      message: "Product inserted in cart successfully",
+      message: "Order Placed successfully",
       data: result,
     });
   } catch (error) {
     res.status(400).json({
       status: "error",
-      message: "Product couldn't insert in  cart",
+      message: "Order couldn't Placed",
       error: error.message,
     });
   }
@@ -30,13 +30,13 @@ exports.getAllOrders = async (req, res, next) => {
     const result = await getOrders();
     res.status(200).json({
       status: "success",
-      message: "Cart Item Fetched successfully",
+      message: "All Order Fetched successfully",
       data: result,
     });
   } catch (error) {
     res.status(400).json({
       status: "error",
-      message: "Cart Item Couldn't Fetched",
+      message: "Order Item Couldn't Fetched",
       error: error.message,
     });
   }
@@ -47,13 +47,13 @@ exports.getUserOrders = async (req, res, next) => {
     const result = await getUserOrders(req.params.userPhoneNumber);
     res.status(200).json({
       status: "success",
-      message: "Cart Item Fetched successfully",
+      message: "User Order Item Fetched successfully",
       data: result,
     });
   } catch (error) {
     res.status(400).json({
       status: "error",
-      message: "Cart Item Couldn't Fetched",
+      message: "User Order Item Couldn't Fetched",
       error: error.message,
     });
   }
@@ -64,13 +64,13 @@ exports.getOrderById = async (req, res, next) => {
     const result = await getOrderById(req.params.id);
     res.status(200).json({
       status: "success",
-      message: "Product Fetched Successfully",
+      message: "Order Fetched Successfully",
       data: result,
     });
   } catch (error) {
     res.status(400).json({
       status: "error",
-      message: "Product couldn't Fetched",
+      message: "Order couldn't Fetched",
       error: error.message,
     });
   }
@@ -81,13 +81,13 @@ exports.updateOrder = async (req, res, next) => {
     const result = await updateOrder(req.params.id, req.body);
     res.status(200).json({
       status: "success",
-      message: "Product updated successfully",
+      message: "Order updated successfully",
       data: result,
     });
   } catch (error) {
     res.status(400).json({
       status: "error",
-      message: "Product couldn't update",
+      message: "Order couldn't update",
       error: error.message,
     });
   }
@@ -98,13 +98,13 @@ exports.deleteOrderByID = async (req, res, next) => {
     const result = await deleteOrder(req.params.id);
     res.status(200).json({
       status: "success",
-      message: "Product deleted successfully",
+      message: "Order deleted successfully",
       data: result,
     });
   } catch (error) {
     res.status(400).json({
       status: "error",
-      message: "Product couldn't deleted",
+      message: "Order couldn't deleted",
       error: error.message,
     });
   }

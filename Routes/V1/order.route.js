@@ -6,8 +6,9 @@ const verifyToken = require("../../middleware/tokenVerification");
 const router = express.Router();
 
 router
-  .post("/", verifyToken, orderController.saveOrderData)
-  .get(verifyToken, orderController.getAllOrders);
+  .route("/")
+  .post(verifyToken, orderController.saveOrderData)
+  .get(orderController.getAllOrders);
 router
   .route("/:userPhoneNumber")
   .get(verifyToken, orderController.getUserOrders);
