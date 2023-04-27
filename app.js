@@ -10,9 +10,11 @@ app.use(express.json());
 const userRoute = require("./Routes/V1/user.route");
 const productRoute = require("./Routes/V1/product.route");
 const cartRoute = require("./Routes/V1/cart.route");
+const orderRoute = require("./Routes/V1/order.route");
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/product", productRoute);
 app.use("/api/v1/cart", cartRoute);
+app.use("/api/v1/order", cartRoute);
 
 app.get("/", (req, res) => {
   res.send(`<h1>Welcome to the database</h1>
