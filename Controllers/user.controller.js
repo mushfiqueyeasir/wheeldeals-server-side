@@ -120,6 +120,7 @@ exports.getUsers = async (req, res, next) => {
         phoneNumber: Element.phoneNumber,
         role: Element.role,
         name: Element.name,
+        imgURL: Element.imgURL,
         status: Element.status,
         primary: Element.primary,
         createdAt: Element.createdAt,
