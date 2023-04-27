@@ -95,6 +95,7 @@ exports.getMe = async (req, res, next) => {
         name: result.name,
         status: result.status,
         imgURL: result.imgURL,
+        id: result._id,
       };
     }
     res.status(200).json({

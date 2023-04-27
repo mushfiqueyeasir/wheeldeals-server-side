@@ -8,6 +8,7 @@ exports.generateToken = (userInfo) => {
     role: userInfo.role,
     _id: userInfo._id,
   };
+
   const token = jwt.sign(payLoad, process.env.TOKEN_SECRET, {
     expiresIn: "1days",
   });
