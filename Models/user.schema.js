@@ -21,6 +21,11 @@ const userSchema = mongoose.Schema(
         message: "Password {VALUE} is not strong",
       },
     },
+    address: {
+      type: String,
+      minLength: [3, "Address must be at list 3 characters"],
+      maxLength: [300, "Address is to long"],
+    },
 
     role: {
       type: String,

@@ -1,5 +1,5 @@
 const { ObjectId } = require("mongodb");
-const cartSchema = require("../Models/cart.schema.js.js");
+const cartSchema = require("../Models/cart.schema.js");
 
 exports.saveCart = async (data) => {
   const result = await cartSchema.create(data);
