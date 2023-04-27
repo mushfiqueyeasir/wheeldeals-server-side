@@ -32,6 +32,10 @@ const cartSchema = mongoose.Schema(
       required: [true, "Product Price is required"],
       minLength: [0, "Product Price Can't be Negative"],
     },
+    productID: {
+      type: String,
+      required: [true, "Product ID is required"],
+    },
   },
 
   { timestamps: true }
